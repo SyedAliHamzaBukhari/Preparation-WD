@@ -22,10 +22,16 @@
     </nav>
   </header>
 
-  <main>
-    <section aria-labelledby="welcome">
-      <h1 id="welcome">Welcome to My Portfolio</h1>
-      <p>Hi, I'm [Your Name], a passionate web developer.</p>
+<main>
+    <section aria-labelledby="intro">
+      <h1 id="intro">
+        <span class="static-text">Hi, it's </span>
+        <span class="typing-text name">Syed Ali Hamza</span>
+      </h1>
+      <p>
+        <span class="static-text">I'm a </span>
+        <span class="typing-text roles">Web Developer, Software Engineer, Python Developer</span>
+      </p>
     </section>
 
     <section aria-labelledby="about">
@@ -50,7 +56,50 @@
   </main>
 
   <footer>
-    <p>&copy; [Current Year] [Your Name]. All rights reserved.</p>
+    <p>&copy; 2025 Syed Ali Hamza.</p>
   </footer>
+
+  <script>
+    const rolesElement = document.querySelector('.typing-text.roles');
+    const roles = ['Web Developer', 'Software Engg.', 'Python Developer'];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let currentText = '';
+
+    function type() {
+      const fullText = roles[roleIndex];
+      if (isDeleting) {
+        currentText = fullText.substring(0, charIndex--);
+      } else {
+        currentText = fullText.substring(0, charIndex++);
+      }
+
+      rolesElement.textContent = currentText;
+
+      if (!isDeleting && charIndex === fullText.length + 1) {
+        isDeleting = true;
+        setTimeout(type, 1000);
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        setTimeout(type, 500);
+      } else {
+        setTimeout(type, isDeleting ? 50 : 100);
+      }
+    }
+
+    const nameElement = document.querySelector('.typing-text.name');
+    const nameText = nameElement.textContent;
+    let nameCharIndex = 0;
+
+    function typeName() {
+      nameElement.textContent = nameText.substring(0, nameCharIndex++);
+      if (nameCharIndex <= nameText.length) { setTimeout(typeName, 100) ; } 
+      else { setTimeout(type, 500) ; }
+    }
+
+    document.addEventListener('DOMContentLoaded', typeName);
+  </script>
 </body>
 </html>

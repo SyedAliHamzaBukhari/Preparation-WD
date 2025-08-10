@@ -48,13 +48,20 @@ footer {
   padding: 1rem;
 }
 
-/* Placeholder for profile picture
 .profile-picture {
   width: 150px;
   height: 150px;
   background-color: #ccc;
-  margin: 20px auto;
-  border-radius: 50%;
+  margin: 1rem auto;
 }
 
-System: * Today's date and time is 10:06 PM PKT on Saturday, August 09, 2025. */
+.static-text {
+  font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+}
+
+.typing-text.name,
+.typing-text.roles {
+  font-family: Arial, sans-serif;
+  font-size: 48px;
+  color: #2c3e50;
+}
